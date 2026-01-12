@@ -77,13 +77,17 @@ export function FAQSection() {
               <Card className="overflow-hidden">
                 <button
                   onClick={() => setOpenId(openId === faq.id ? null : faq.id)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                  {...(openId === faq.id && { 
+                    "aria-expanded": "true",
+                    "aria-controls": `faq-answer-${faq.id}`
+                  })}
                 >
                   <span className="font-semibold text-lg pr-8">
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`h-5 w-5 text-gray-500 flex-shrink-0 transition-transform ${
+                    className={`h-5 w-5 text-gray-500 shrink-0 transition-transform ${
                       openId === faq.id ? "transform rotate-180" : ""
                     }`}
                   />
@@ -91,6 +95,7 @@ export function FAQSection() {
                 <AnimatePresence>
                   {openId === faq.id && (
                     <motion.div
+                      id={`faq-answer-${faq.id}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

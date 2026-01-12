@@ -33,9 +33,13 @@ export default function BlogPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Link href={`/blog/${post.slug}`}>
+                <Link href={`/blog/${post.slug}`} aria-label={`Read article: ${post.title}`}>
                   <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-                    <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-t-xl" />
+                    <div 
+                      className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-t-xl"
+                      role="img"
+                      aria-label={`Featured image for ${post.title}`}
+                    />
                     <CardHeader>
                       <CardTitle className="line-clamp-2">{post.title}</CardTitle>
                       <CardDescription className="line-clamp-2">

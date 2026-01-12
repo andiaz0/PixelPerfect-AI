@@ -8,11 +8,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Check, Loader2 } from "lucide-react"
 import { formatPrice } from "@/lib/utils"
 import { useToast } from "@/components/ui/use-toast"
-import { loadStripe } from "@stripe/stripe-js"
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_test_51PeOAWGPI9OhxNOdi21dPE72Y9QMoHhuIMVxKMYHMRrvV42ANw7iqgmC3tAl6ShUWcNxvr4P0mWnD9RFU9zPuIgU00XGNDO1Iu"
-)
 
 function CheckoutContent() {
   const searchParams = useSearchParams()
@@ -77,7 +72,7 @@ function CheckoutContent() {
               <ul className="space-y-3 mb-8">
                 {tier.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start">
-                    <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Check className="h-5 w-5 text-green-500 mr-2 mt-0.5 shrink-0" />
                     <span className="text-sm text-gray-600">{feature}</span>
                   </li>
                 ))}
@@ -117,7 +112,7 @@ export default function CheckoutPage() {
     <Suspense fallback={
       <div className="pt-20 pb-20 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4" aria-label="Loading checkout" />
           <p className="text-gray-600">Loading...</p>
         </div>
       </div>

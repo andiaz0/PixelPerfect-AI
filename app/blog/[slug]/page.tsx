@@ -5,6 +5,33 @@ import { Calendar, User, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const post = blogPosts.find((p) => p.slug === slug)
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    }
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.author],
+    },
+  }
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -42,7 +69,11 @@ export default async function BlogPostPage({
                 {format(new Date(post.date), "MMMM d, yyyy")}
               </div>
             </div>
-            <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-8" />
+            <div 
+              className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-8"
+              role="img"
+              aria-label={`Featured image for ${post.title}`}
+            />
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-600 mb-6">{post.excerpt}</p>
               <div className="text-gray-700 leading-relaxed">

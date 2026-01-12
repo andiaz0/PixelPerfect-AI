@@ -8,7 +8,7 @@ function getStripe() {
     throw new Error("STRIPE_SECRET_KEY is not set")
   }
   return new Stripe(secretKey, {
-//    apiVersion: "2024-11-20.acacia",
+    apiVersion: "2025-12-15.clover",
   })
 }
 
@@ -46,9 +46,19 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    return NextResponse.json({ sessionId: session.id })
+    if (!session.url) {
+      return NextResponse.json(
+        { error: "Failed to create checkout session URL" },
+        { status: 500 }
+      )
+    }
+
+    return NextResponse.json({ url: session.url })
   } catch (error) {
-    console.error("Stripe error:", error)
+    // Log error only in development
+    if (process.env.NODE_ENV === "development") {
+      console.error("Stripe error:", error)
+    }
     const errorMessage = error instanceof Error ? error.message : "Failed to create checkout session"
     return NextResponse.json(
       { error: errorMessage },

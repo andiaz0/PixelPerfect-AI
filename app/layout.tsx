@@ -11,8 +11,6 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
-import "./globals.css";
-
 export const metadata: Metadata = {
   title: {
     default: "PixelPerfect AI - Premium AI-Powered Website Templates",
@@ -49,7 +47,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-
       <body className={`${inter.variable} antialiased`}>
         <AuthProvider>
           <Navigation />
@@ -57,10 +54,6 @@ export default function RootLayout({
           <Footer />
           <Toaster />
         </AuthProvider>
-)      </body>
-      <body className="antialiased">
-        {children}
- 
       </body>
     </html>
   )

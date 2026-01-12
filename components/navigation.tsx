@@ -21,7 +21,7 @@ export function Navigation() {
     <nav className="fixed top-0 z-50 w-full border-b bg-white/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2" aria-label="PixelPerfect AI Home">
             <span className="text-xl font-bold tracking-tight">
               PixelPerfect AI
             </span>
@@ -126,9 +126,10 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            {...(mobileMenuOpen && { "aria-expanded": "true" })}
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />
