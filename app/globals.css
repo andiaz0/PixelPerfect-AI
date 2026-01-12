@@ -1,83 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import "tailwindcss";
 
-/* your custom styles below if you have any */
+/* Your custom styles below */
 
 :root {
-<<<<<<< HEAD
-  --color-background: 255 255 255;
-  --color-foreground: 10 10 10;
-  --color-card: 255 255 255;
-  --color-card-foreground: 10 10 10;
-  --color-popover: 255 255 255;
-  --color-popover-foreground: 10 10 10;
-  --color-primary: 10 10 10;
-  --color-primary-foreground: 255 255 255;
-  --color-secondary: 245 245 245;
-  --color-secondary-foreground: 10 10 10;
-  --color-muted: 245 245 245;
-  --color-muted-foreground: 113 113 122;
-  --color-accent: 245 245 245;
-  --color-accent-foreground: 10 10 10;
-  --color-destructive: 239 68 68;
-  --color-destructive-foreground: 255 255 255;
-  --color-border: 229 229 229;
-  --color-input: 229 229 229;
-  --color-ring: 10 10 10;
-  --radius: 0.5rem;
-=======
   --background: #ffffff;
   --foreground: #171717;
   --font-geist-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-geist-mono: "SFMono-Regular", "Menlo", "Monaco", "Consolas",
     "Liberation Mono", "Courier New", monospace;
->>>>>>> 7d39af4440e82150937a4593add25f0fda986ecc
 }
 
 * {
-  border-color: rgb(var(--color-border));
+  border-color: var(--color-border);
 }
 
 body {
-<<<<<<< HEAD
-  background: rgb(var(--color-background));
-  color: rgb(var(--color-foreground));
-  font-family: var(--font-inter), system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-up {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
-}
-
-.animate-slide-up {
-  animation: slide-up 0.6s ease-out;
-=======
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans);
->>>>>>> 7d39af4440e82150937a4593add25f0fda986ecc
 }

@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { loadStripe } from "@stripe/stripe-js"
 
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_test_placeholder"
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "pk_test_51PeOAWGPI9OhxNOdi21dPE72Y9QMoHhuIMVxKMYHMRrvV42ANw7iqgmC3tAl6ShUWcNxvr4P0mWnD9RFU9zPuIgU00XGNDO1Iu"
 )
 
 function CheckoutContent() {
@@ -38,18 +38,11 @@ function CheckoutContent() {
         throw new Error(data.error || "Failed to create checkout session")
       }
 
-      const stripe = await stripePromise
-      if (!stripe) {
-        throw new Error("Stripe failed to load")
+      if (!data.url) {
+        throw new Error("No checkout URL provided")
       }
 
-      const result = await stripe.redirectToCheckout({
-        sessionId: data.sessionId,
-      })
-
-      if (result.error) {
-        throw new Error(result.error.message || "Failed to redirect to checkout")
-      }
+      window.location.href = data.url
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Something went wrong"
       toast({

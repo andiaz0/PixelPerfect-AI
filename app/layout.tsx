@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-import type { Metadata } from "next"
+import type { Metadata } from 'next'
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
@@ -12,11 +11,8 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
-=======
-import type { Metadata } from "next";
 import "./globals.css";
 
->>>>>>> 7d39af4440e82150937a4593add25f0fda986ecc
 export const metadata: Metadata = {
   title: {
     default: "PixelPerfect AI - Premium AI-Powered Website Templates",
@@ -53,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-<<<<<<< HEAD
+
       <body className={`${inter.variable} antialiased`}>
         <AuthProvider>
           <Navigation />
@@ -61,10 +57,10 @@ export default function RootLayout({
           <Footer />
           <Toaster />
         </AuthProvider>
-=======
+)      </body>
       <body className="antialiased">
         {children}
->>>>>>> 7d39af4440e82150937a4593add25f0fda986ecc
+ 
       </body>
     </html>
   )

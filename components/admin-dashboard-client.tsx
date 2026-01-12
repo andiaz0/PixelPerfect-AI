@@ -2,44 +2,73 @@
 
 import { useState } from "react"
 import { updateOrderStatus } from "@/lib/orders"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { formatPrice } from "@/lib/utils"
 import { format } from "date-fns"
-import { CheckCircle, Clock, Users, DollarSign, Package } from "lucide-react"
+import { CheckCircle, Clock, Users, DollarSign } from "lucide-react"
 import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-interface AdminDashboardClientProps {
-  orders: any[]
-  customers: any[]
+// ---- Types ----
+
+type OrderStatus = "completed" | "pending" | "cancelled"
+
+interface Order {
+  id: string
+  orderId: string
+  customerName: string
+  customerEmail: string
+  tier: string
+  amount: number
+  status: OrderStatus
+  createdAt: string | Date
 }
+
+interface Customer {
+  id: string
+  name: string
+  email: string
+  role: string // or "admin" | "user" etc. if you want stricter typing
+}
+
+interface AdminDashboardClientProps {
+  orders: Order[]
+  customers: Customer[]
+}
+
+// ---- Component ----
 
 export default function AdminDashboardClient({
   orders: initialOrders,
   customers,
 }: AdminDashboardClientProps) {
-  const [orders, setOrders] = useState(initialOrders)
+  const [orders, setOrders] = useState<Order[]>(initialOrders)
 
-  const handleStatusUpdate = (orderId: string, newStatus: string) => {
+  const handleStatusUpdate = (orderId: string, newStatus: OrderStatus) => {
+    // If updateOrderStatus is async, you can make this function async and await it
     updateOrderStatus(orderId, newStatus)
+
     // Update local state
-    setOrders(
-      orders.map((order) =>
+    setOrders((prev) =>
+      prev.map((order) =>
         order.id === orderId ? { ...order, status: newStatus } : order
       )
     )
   }
 
-  const totalRevenue = orders.reduce((sum, order) => sum + (order.amount || 0), 0)
+  const totalRevenue = orders.reduce((sum, order) => sum + order.amount, 0)
   const completedOrders = orders.filter((o) => o.status === "completed").length
   const pendingOrders = orders.filter((o) => o.status === "pending").length
 
-  // Get unique customers from orders
-  const uniqueCustomers = Array.from(
-    new Set(orders.map((o) => o.customerEmail))
-  ).length
+  const uniqueCustomers = new Set(orders.map((o) => o.customerEmail)).size
 
   return (
     <div className="pt-20 pb-20 min-h-screen bg-gray-50">
@@ -58,11 +87,15 @@ export default function AdminDashboardClient({
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Total Revenue
+                  </CardTitle>
                   <DollarSign className="h-4 w-4 text-gray-600" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{formatPrice(totalRevenue)}</div>
+                  <div className="text-2xl font-bold">
+                    {formatPrice(totalRevenue)}
+                  </div>
                   <p className="text-xs text-gray-600 mt-1">
                     From {orders.length} orders
                   </p>
@@ -71,34 +104,46 @@ export default function AdminDashboardClient({
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Completed Orders</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Completed Orders
+                  </CardTitle>
                   <CheckCircle className="h-4 w-4 text-green-600" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{completedOrders}</div>
-                  <p className="text-xs text-gray-600 mt-1">Successfully processed</p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Successfully processed
+                  </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Pending Orders</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Pending Orders
+                  </CardTitle>
                   <Clock className="h-4 w-4 text-yellow-600" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{pendingOrders}</div>
-                  <p className="text-xs text-gray-600 mt-1">Awaiting action</p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Awaiting action
+                  </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Customers</CardTitle>
+                  <CardTitle className="text-sm font-medium">
+                    Total Customers
+                  </CardTitle>
                   <Users className="h-4 w-4 text-gray-600" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{uniqueCustomers}</div>
-                  <p className="text-xs text-gray-600 mt-1">Unique customers</p>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Unique customers
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -110,6 +155,7 @@ export default function AdminDashboardClient({
                 <TabsTrigger value="customers">Customers</TabsTrigger>
               </TabsList>
 
+              {/* Orders Tab */}
               <TabsContent value="orders" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -123,13 +169,27 @@ export default function AdminDashboardClient({
                       <table className="w-full">
                         <thead>
                           <tr className="border-b">
-                            <th className="text-left py-3 px-4 font-semibold text-sm">Order ID</th>
-                            <th className="text-left py-3 px-4 font-semibold text-sm">Customer</th>
-                            <th className="text-left py-3 px-4 font-semibold text-sm">Tier</th>
-                            <th className="text-left py-3 px-4 font-semibold text-sm">Amount</th>
-                            <th className="text-left py-3 px-4 font-semibold text-sm">Status</th>
-                            <th className="text-left py-3 px-4 font-semibold text-sm">Date</th>
-                            <th className="text-left py-3 px-4 font-semibold text-sm">Actions</th>
+                            <th className="text-left py-3 px-4 font-semibold text-sm">
+                              Order ID
+                            </th>
+                            <th className="text-left py-3 px-4 font-semibold text-sm">
+                              Customer
+                            </th>
+                            <th className="text-left py-3 px-4 font-semibold text-sm">
+                              Tier
+                            </th>
+                            <th className="text-left py-3 px-4 font-semibold text-sm">
+                              Amount
+                            </th>
+                            <th className="text-left py-3 px-4 font-semibold text-sm">
+                              Status
+                            </th>
+                            <th className="text-left py-3 px-4 font-semibold text-sm">
+                              Date
+                            </th>
+                            <th className="text-left py-3 px-4 font-semibold text-sm">
+                              Actions
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -138,17 +198,28 @@ export default function AdminDashboardClient({
                               key={order.id}
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.3, delay: index * 0.05 }}
+                              transition={{
+                                duration: 0.3,
+                                delay: index * 0.05,
+                              }}
                               className="border-b hover:bg-gray-50"
                             >
-                              <td className="py-4 px-4 text-sm font-mono">{order.orderId}</td>
+                              <td className="py-4 px-4 text-sm font-mono">
+                                {order.orderId}
+                              </td>
                               <td className="py-4 px-4">
                                 <div>
-                                  <div className="text-sm font-medium">{order.customerName}</div>
-                                  <div className="text-xs text-gray-600">{order.customerEmail}</div>
+                                  <div className="text-sm font-medium">
+                                    {order.customerName}
+                                  </div>
+                                  <div className="text-xs text-gray-600">
+                                    {order.customerEmail}
+                                  </div>
                                 </div>
                               </td>
-                              <td className="py-4 px-4 text-sm capitalize">{order.tier}</td>
+                              <td className="py-4 px-4 text-sm capitalize">
+                                {order.tier}
+                              </td>
                               <td className="py-4 px-4 text-sm font-semibold">
                                 {formatPrice(order.amount)}
                               </td>
@@ -174,7 +245,9 @@ export default function AdminDashboardClient({
                                     <Button
                                       size="sm"
                                       variant="outline"
-                                      onClick={() => handleStatusUpdate(order.id, "completed")}
+                                      onClick={() =>
+                                        handleStatusUpdate(order.id, "completed")
+                                      }
                                     >
                                       <CheckCircle className="h-4 w-4 mr-1" />
                                       Complete
@@ -191,6 +264,7 @@ export default function AdminDashboardClient({
                 </Card>
               </TabsContent>
 
+              {/* Customers Tab */}
               <TabsContent value="customers" className="space-y-4">
                 <Card>
                   <CardHeader>
@@ -206,7 +280,10 @@ export default function AdminDashboardClient({
                           key={customer.id}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
+                          transition={{
+                            duration: 0.3,
+                            delay: index * 0.05,
+                          }}
                           className="p-4 border rounded-lg hover:bg-gray-50 transition-colors"
                         >
                           <div className="flex items-center gap-3 mb-3">
@@ -215,10 +292,16 @@ export default function AdminDashboardClient({
                             </div>
                             <div>
                               <p className="font-semibold">{customer.name}</p>
-                              <p className="text-sm text-gray-600">{customer.email}</p>
+                              <p className="text-sm text-gray-600">
+                                {customer.email}
+                              </p>
                             </div>
                           </div>
-                          <Badge variant={customer.role === "admin" ? "default" : "secondary"}>
+                          <Badge
+                            variant={
+                              customer.role === "admin" ? "default" : "secondary"
+                            }
+                          >
                             {customer.role}
                           </Badge>
                         </motion.div>
@@ -234,4 +317,3 @@ export default function AdminDashboardClient({
     </div>
   )
 }
-
