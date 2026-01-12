@@ -10,7 +10,7 @@ export interface User {
 
 // Default admin password: admin123
 // Hashed using bcrypt with 10 rounds
-let users: User[] = [
+const users: User[] = [
   {
     id: "1",
     email: "admin@pixelperfectai.com",
