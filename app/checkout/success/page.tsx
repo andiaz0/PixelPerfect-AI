@@ -7,11 +7,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { CheckCircle, Download, Mail } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { useSession } from "next-auth/react"
 
 function SuccessContent() {
   const searchParams = useSearchParams()
   const sessionId = searchParams.get("session_id")
+  const tierId = searchParams.get("tier")
+  const { data: session, status } = useSession()
   const [loading, setLoading] = useState(true)
+  const [isConfirming, setIsConfirming] = useState(false)
+  const [confirmError, setConfirmError] = useState<string | null>(null)
 
   useEffect(() => {
     // Simulate fetching order details
@@ -20,6 +25,39 @@ function SuccessContent() {
     }, 1000)
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (!sessionId || !tierId || status !== "authenticated" || isConfirming) {
+      return
+    }
+
+    const confirmOrder = async () => {
+      setIsConfirming(true)
+      setConfirmError(null)
+      try {
+        const response = await fetch("/api/orders/confirm", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ sessionId, tierId }),
+        })
+
+        if (!response.ok) {
+          const data = await response.json()
+          throw new Error(data.error || "Failed to confirm order")
+        }
+      } catch (error) {
+        const message =
+          error instanceof Error ? error.message : "Failed to confirm order"
+        setConfirmError(message)
+      } finally {
+        setIsConfirming(false)
+      }
+    }
+
+    confirmOrder()
+  }, [sessionId, tierId, status, isConfirming])
 
   if (loading) {
     return (
@@ -51,6 +89,23 @@ function SuccessContent() {
               <p className="text-lg text-gray-600">
                 Thanks for subscribing. Your InvoiceFlow Pro workspace is ready.
               </p>
+              {status === "authenticated" && (
+                <p className="text-sm text-gray-500 mt-2">
+                  {isConfirming
+                    ? "Syncing your subscription to the dashboard..."
+                    : "Your subscription is linked to your account."}
+                </p>
+              )}
+              {status === "unauthenticated" && (
+                <p className="text-sm text-gray-500 mt-2">
+                  Log in to see this payment reflected in your dashboard.
+                </p>
+              )}
+              {confirmError && (
+                <p className="text-sm text-red-600 mt-2">
+                  {confirmError}
+                </p>
+              )}
             </div>
 
             <Card className="mb-8">

@@ -5,7 +5,7 @@ import AdminDashboardClient from "@/components/admin-dashboard-client"
 
 export const metadata = {
   title: "Admin Dashboard",
-  description: "Admin panel for managing orders and customers.",
+  description: "Admin panel for managing subscriptions and customers.",
   robots: {
     index: false,
     follow: false,

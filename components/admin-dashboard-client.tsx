@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { updateOrderStatus } from "@/lib/orders"
+import type { Order } from "@/lib/orders"
 import {
   Card,
   CardContent,
@@ -20,17 +21,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 // ---- Types ----
 
 type OrderStatus = "completed" | "pending" | "cancelled"
-
-interface Order {
-  id: string
-  orderId: string
-  customerName: string
-  customerEmail: string
-  tier: string
-  amount: number
-  status: OrderStatus
-  createdAt: string | Date
-}
 
 interface Customer {
   id: string
@@ -217,8 +207,8 @@ export default function AdminDashboardClient({
                                   </div>
                                 </div>
                               </td>
-                              <td className="py-4 px-4 text-sm capitalize">
-                                {order.tier}
+                              <td className="py-4 px-4 text-sm">
+                                {order.tierName}
                               </td>
                               <td className="py-4 px-4 text-sm font-semibold">
                                 {formatPrice(order.amount)}
