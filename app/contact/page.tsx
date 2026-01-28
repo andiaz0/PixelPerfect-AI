@@ -48,8 +48,8 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-            Have a question? We'd love to hear from you. Send us a message and
-            we'll respond as soon as possible.
+            Have a question about measurements, invoicing, or onboarding your
+            crew? Send us a message and we will respond quickly.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -60,15 +60,15 @@ export default function ContactPage() {
                 </div>
                 <CardTitle>Email Us</CardTitle>
                 <CardDescription>
-                  Send us an email anytime for support or inquiries.
+                  Email us anytime for support or product questions.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <a
-                  href="mailto:support@pixelperfectai.com"
+                  href="mailto:support@invoiceflowpro.com"
                   className="text-gray-900 font-medium hover:underline"
                 >
-                  support@pixelperfectai.com
+                  support@invoiceflowpro.com
                 </a>
               </CardContent>
             </Card>
@@ -78,19 +78,19 @@ export default function ContactPage() {
                 <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center mb-4">
                   <MessageSquare className="h-6 w-6 text-gray-900" />
                 </div>
-                <CardTitle>Support Hours</CardTitle>
-                <CardDescription>
-                  We're here to help during business hours.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-900 font-medium">
-                  Monday - Friday
-                  <br />
-                  9:00 AM - 6:00 PM EST
-                </p>
-              </CardContent>
-            </Card>
+              <CardTitle>Support Hours</CardTitle>
+              <CardDescription>
+                We're here to help during business hours.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-900 font-medium">
+                Monday - Friday
+                <br />
+                8:00 AM - 6:00 PM EST
+              </p>
+            </CardContent>
+          </Card>
           </div>
 
           <Card>
@@ -168,4 +168,3 @@ export default function ContactPage() {
     </div>
   )
 }
-

@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
           price_data: {
             currency: "usd",
             product_data: {
-              name: `PixelPerfect AI - ${tier.name}`,
+              name: `InvoiceFlow Pro - ${tier.name}`,
               description: tier.description,
             },
             unit_amount: tier.price * 100, // Convert to cents
@@ -66,4 +66,3 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-

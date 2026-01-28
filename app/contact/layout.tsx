@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with PixelPerfect AI. We're here to help with support, inquiries, and questions about our AI-powered website templates.",
+  description: "Get in touch with InvoiceFlow Pro for support, onboarding, and billing questions.",
 }
 
 export default function ContactLayout({
@@ -12,4 +12,3 @@ export default function ContactLayout({
 }) {
   return children
 }
-

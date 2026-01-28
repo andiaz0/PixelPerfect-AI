@@ -20,11 +20,11 @@ export function PricingSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Simple, Transparent Pricing
+            Simple pricing for every crew size
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Choose the plan that fits your needs. All plans include our core
-            features and premium support.
+            Pick a plan that scales with your projects. All tiers include the
+            measurement engine, PDF invoices, and payment tracking.
           </p>
         </motion.div>
 
@@ -56,7 +56,7 @@ export function PricingSection() {
                     <span className="text-4xl font-bold">
                       {formatPrice(tier.price)}
                     </span>
-                    <span className="text-gray-600 ml-2">/one-time</span>
+                    <span className="text-gray-600 ml-2">/month</span>
                   </div>
                 </CardHeader>
                 <CardContent className="flex-grow">
@@ -88,4 +88,3 @@ export function PricingSection() {
     </section>
   )
 }
-
