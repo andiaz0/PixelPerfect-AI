@@ -2,7 +2,8 @@
 export interface Order {
   id: string
   orderId: string
-  tier: string
+  tierId: string
+  tierName: string
   amount: number
   customerEmail: string
   customerName: string
@@ -14,8 +15,9 @@ let orders: Order[] = [
   {
     id: "1",
     orderId: "ord_123456",
-    tier: "professional",
-    amount: 79,
+    tierId: "professional",
+    tierName: "Growth",
+    amount: 89,
     customerEmail: "sarah@example.com",
     customerName: "Sarah Chen",
     status: "completed",
@@ -24,8 +26,9 @@ let orders: Order[] = [
   {
     id: "2",
     orderId: "ord_123457",
-    tier: "starter",
-    amount: 29,
+    tierId: "starter",
+    tierName: "Starter",
+    amount: 39,
     customerEmail: "mike@example.com",
     customerName: "Michael Rodriguez",
     status: "completed",
@@ -34,7 +37,8 @@ let orders: Order[] = [
   {
     id: "3",
     orderId: "ord_123458",
-    tier: "agency",
+    tierId: "agency",
+    tierName: "Enterprise",
     amount: 199,
     customerEmail: "emily@example.com",
     customerName: "Emily Johnson",
@@ -69,3 +73,6 @@ export function getOrderById(id: string): Order | undefined {
   return orders.find((o) => o.id === id)
 }
 
+export function getOrderByOrderId(orderId: string): Order | undefined {
+  return orders.find((o) => o.orderId === orderId)
+}

@@ -93,7 +93,7 @@ export default function RegisterPage() {
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">Create Account</CardTitle>
             <CardDescription>
-              Sign up to get started with PixelPerfect AI
+              Sign up to get started with InvoiceFlow Pro
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -176,4 +176,3 @@ export default function RegisterPage() {
     </div>
   )
 }
-

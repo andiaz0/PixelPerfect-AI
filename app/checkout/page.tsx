@@ -54,7 +54,7 @@ function CheckoutContent() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-8 text-center">
-            Complete Your Purchase
+            Complete Your Subscription
           </h1>
 
           <Card>
@@ -65,7 +65,7 @@ function CheckoutContent() {
                 <span className="text-4xl font-bold">
                   {formatPrice(tier.price)}
                 </span>
-                <span className="text-gray-600 ml-2">/one-time</span>
+                <span className="text-gray-600 ml-2">/month</span>
               </div>
             </CardHeader>
             <CardContent>

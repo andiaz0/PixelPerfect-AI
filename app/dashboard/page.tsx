@@ -5,7 +5,7 @@ import DashboardClient from "@/components/dashboard-client"
 
 export const metadata = {
   title: "Dashboard",
-  description: "Manage your orders, downloads, and account settings.",
+  description: "Track subscriptions, payments, and workspace activity.",
   robots: {
     index: false,
     follow: false,

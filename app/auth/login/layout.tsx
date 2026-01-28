@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Sign In",
-  description: "Sign in to your PixelPerfect AI account to access your dashboard and downloads.",
+  description: "Sign in to your InvoiceFlow Pro account to manage projects and invoices.",
   robots: {
     index: false,
     follow: false,
@@ -16,4 +16,3 @@ export default function LoginLayout({
 }) {
   return children
 }
-

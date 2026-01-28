@@ -18,11 +18,11 @@ export default function BlogPage() {
           className="max-w-6xl mx-auto"
         >
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 text-center">
-            Blog
+            InvoiceFlow Pro Blog
           </h1>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-            Insights, tips, and updates about web design, AI, and building
-            better websites.
+            Insights, tips, and updates for renovation and construction teams
+            focused on faster invoicing and healthier cash flow.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -68,4 +68,3 @@ export default function BlogPage() {
     </div>
   )
 }
-

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Sign Up",
-  description: "Create a new PixelPerfect AI account to get started with our premium templates.",
+  description: "Create a new InvoiceFlow Pro account to start measuring, invoicing, and tracking payments.",
   robots: {
     index: false,
     follow: false,
@@ -16,4 +16,3 @@ export default function RegisterLayout({
 }) {
   return children
 }
-
