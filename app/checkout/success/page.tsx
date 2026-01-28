@@ -46,10 +46,10 @@ function SuccessContent() {
                 <CheckCircle className="h-8 w-8 text-green-600" />
               </div>
               <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-                Payment Successful!
+                Subscription Confirmed!
               </h1>
               <p className="text-lg text-gray-600">
-                Thank you for your purchase. Your order has been confirmed.
+                Thanks for subscribing. Your InvoiceFlow Pro workspace is ready.
               </p>
             </div>
 
@@ -68,15 +68,15 @@ function SuccessContent() {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 shrink-0" />
-                      <span className="text-sm">Download links for your templates</span>
+                      <span className="text-sm">Your subscription receipt</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 shrink-0" />
-                      <span className="text-sm">License information</span>
+                      <span className="text-sm">Getting started checklist</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 shrink-0" />
-                      <span className="text-sm">Setup instructions and documentation</span>
+                      <span className="text-sm">Measurement sheet templates</span>
                     </li>
                   </ul>
                 </div>
@@ -87,7 +87,7 @@ function SuccessContent() {
               <Link href="/dashboard">
                 <Button variant="outline" size="lg">
                   <Download className="mr-2 h-4 w-4" />
-                  View Downloads
+                  Go to Dashboard
                 </Button>
               </Link>
               <Link href="/">

@@ -13,26 +13,28 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "PixelPerfect AI - Premium AI-Powered Website Templates",
-    template: "%s | PixelPerfect AI",
+    default: "InvoiceFlow Pro - Measurement-Based Invoicing for Trades",
+    template: "%s | InvoiceFlow Pro",
   },
   description:
-    "Build stunning websites with AI-powered templates. Professional, responsive designs for modern businesses.",
-  keywords: ["website templates", "AI templates", "web design", "Next.js templates"],
-  authors: [{ name: "PixelPerfect AI" }],
-  creator: "PixelPerfect AI",
+    "InvoiceFlow Pro helps renovation teams convert measurements into invoices, track payments, and stay VAT-ready.",
+  keywords: ["construction invoicing", "measurement sheets", "contractor billing", "renovation software"],
+  authors: [{ name: "InvoiceFlow Pro" }],
+  creator: "InvoiceFlow Pro",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://pixelperfectai.com",
-    title: "PixelPerfect AI - Premium AI-Powered Website Templates",
-    description: "Build stunning websites with AI-powered templates. Professional, responsive designs for modern businesses.",
-    siteName: "PixelPerfect AI",
+    url: "https://invoiceflowpro.com",
+    title: "InvoiceFlow Pro - Measurement-Based Invoicing for Trades",
+    description:
+      "InvoiceFlow Pro helps renovation teams convert measurements into invoices, track payments, and stay VAT-ready.",
+    siteName: "InvoiceFlow Pro",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PixelPerfect AI - Premium AI-Powered Website Templates",
-    description: "Build stunning websites with AI-powered templates. Professional, responsive designs for modern businesses.",
+    title: "InvoiceFlow Pro - Measurement-Based Invoicing for Trades",
+    description:
+      "InvoiceFlow Pro helps renovation teams convert measurements into invoices, track payments, and stay VAT-ready.",
   },
   robots: {
     index: true,

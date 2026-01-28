@@ -3,21 +3,21 @@
 import { features } from "@/lib/data"
 import { motion } from "framer-motion"
 import {
-  Sparkles,
-  Smartphone,
-  Layers,
-  Palette,
-  Zap,
-  Download,
+  Ruler,
+  FileText,
+  Calculator,
+  Mail,
+  BarChart3,
+  ShieldCheck,
 } from "lucide-react"
 
 const iconMap: Record<string, any> = {
-  sparkles: Sparkles,
-  smartphone: Smartphone,
-  layers: Layers,
-  palette: Palette,
-  zap: Zap,
-  download: Download,
+  ruler: Ruler,
+  "file-text": FileText,
+  calculator: Calculator,
+  mail: Mail,
+  "bar-chart-3": BarChart3,
+  "shield-check": ShieldCheck,
 }
 
 export function FeaturesSection() {
@@ -32,17 +32,17 @@ export function FeaturesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Everything You Need to Succeed
+            Built for renovation and construction invoicing
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Powerful features designed to help you build beautiful, professional
-            websites with ease.
+            InvoiceFlow Pro keeps your crews focused on the job while the system
+            handles measurements, invoicing, and cash flow tracking.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
-            const Icon = iconMap[feature.icon] || Sparkles
+            const Icon = iconMap[feature.icon] || Ruler
             return (
               <motion.div
                 key={feature.id}
@@ -66,4 +66,3 @@ export function FeaturesSection() {
     </section>
   )
 }
-

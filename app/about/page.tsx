@@ -14,30 +14,29 @@ export default function AboutPage() {
           className="max-w-4xl mx-auto"
         >
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 text-center">
-            About PixelPerfect AI
+            About InvoiceFlow Pro
           </h1>
           <p className="text-xl text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-            We're on a mission to democratize beautiful web design through the
-            power of artificial intelligence.
+            We're on a mission to help trade businesses turn measurements into
+            accurate invoices without the admin headache.
           </p>
 
           <div className="prose prose-lg max-w-none mb-16">
             <p className="text-gray-700 leading-relaxed mb-6">
-              Founded in 2023, PixelPerfect AI was born from a simple idea:
-              what if creating stunning, professional websites didn't require
-              months of design work or thousands of dollars? We believe that
-              everyone, from solo entrepreneurs to large agencies, should have
-              access to world-class website templates.
+              InvoiceFlow Pro was created alongside renovation crews who were
+              tired of juggling measurements, spreadsheets, and invoice PDFs.
+              We built a focused platform that links measurements directly to
+              priced line items, so invoicing is fast, accurate, and easy to
+              explain to clients.
             </p>
             <p className="text-gray-700 leading-relaxed mb-6">
-              Our AI-powered platform combines cutting-edge technology with
-              timeless design principles to generate templates that are not only
-              beautiful but also performant, accessible, and easy to customize.
+              From painters and drywallers to plumbers and insulation teams, we
+              help companies standardize pricing, track payments, and keep every
+              project organized in a single workspace.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Today, we serve thousands of customers worldwide, helping them
-              launch websites faster and more affordably than ever before. Our
-              commitment to quality and innovation drives everything we do.
+              Our commitment is simple: remove admin friction so crews can focus
+              on craftsmanship while the business stays profitable and compliant.
             </p>
           </div>
 
@@ -54,8 +53,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Our Mission</h3>
               <p className="text-gray-600">
-                Make professional web design accessible to everyone, regardless
-                of budget or technical expertise.
+                Help every trade business invoice faster and get paid with
+                confidence.
               </p>
             </motion.div>
 
@@ -71,8 +70,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Innovation</h3>
               <p className="text-gray-600">
-                We leverage the latest AI technology to stay ahead of design
-                trends and deliver cutting-edge templates.
+                We automate measurements, line items, and analytics so teams can
+                scale without extra admin.
               </p>
             </motion.div>
 
@@ -88,8 +87,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Community</h3>
               <p className="text-gray-600">
-                We build for our community, constantly listening to feedback and
-                improving based on real-world needs.
+                We listen to contractors and crew leads to ship tools that solve
+                real on-site workflows.
               </p>
             </motion.div>
           </div>
@@ -98,4 +97,3 @@ export default function AboutPage() {
     </div>
   )
 }
-

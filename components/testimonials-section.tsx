@@ -17,10 +17,11 @@ export function TestimonialsSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Loved by Creators Worldwide
+            Trusted by trade professionals
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            See what our customers are saying about PixelPerfect AI.
+            Contractors use InvoiceFlow Pro to quote faster, invoice smarter,
+            and get paid on time.
           </p>
         </motion.div>
 
@@ -68,4 +69,3 @@ export function TestimonialsSection() {
     </section>
   )
 }
-

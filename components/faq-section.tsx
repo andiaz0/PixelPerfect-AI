@@ -8,39 +8,39 @@ import { Card, CardContent } from "@/components/ui/card"
 const faqs = [
   {
     id: "1",
-    question: "What is included in the templates?",
+    question: "How does the measurement engine work?",
     answer:
-      "Each template includes fully responsive HTML/CSS/JS files, source code, documentation, and commercial license. Professional and Agency plans also include Figma design files and priority support.",
+      "Choose area, volume, linear, or count templates, add your dimensions, and InvoiceFlow Pro calculates totals automatically for each room or zone.",
   },
   {
     id: "2",
-    question: "Can I customize the templates?",
+    question: "Can I customize VAT and invoice numbering?",
     answer:
-      "Yes! All templates are fully customizable. You get the complete source code, so you can modify colors, fonts, layouts, and any other elements to match your brand.",
+      "Yes. Set your VAT rate, currency, and invoice prefix (ex: IF-2026-000123) in company settings and apply them across all invoices.",
   },
   {
     id: "3",
-    question: "Do I own the templates after purchase?",
+    question: "Do you support partial payments and retainers?",
     answer:
-      "Yes, you receive a commercial license with your purchase. You can use the templates for unlimited projects, including client work. The Agency plan includes extended commercial rights.",
+      "Absolutely. Track deposits, progress payments, and final balances with clear payment status updates.",
   },
   {
     id: "4",
-    question: "What kind of support do you offer?",
+    question: "Can I export PDFs and email invoices to clients?",
     answer:
-      "All plans include email support. Starter plan includes 1 month of support, Professional includes 3 months, and Agency includes 12 months. Priority support is available for Professional and Agency plans.",
+      "Every invoice can be exported as a branded PDF and sent directly to clients from the app.",
   },
   {
     id: "5",
-    question: "Are the templates mobile-friendly?",
+    question: "How do teams collaborate on projects?",
     answer:
-      "Absolutely! All templates are built mobile-first and are fully responsive. They look and work perfectly on all devices, from mobile phones to large desktop screens.",
+      "Invite team members, assign roles, and keep measurement sheets, drafts, and payment updates in one shared workspace.",
   },
   {
     id: "6",
-    question: "How do I get updates?",
+    question: "Is there a free trial?",
     answer:
-      "All plans include free updates. When we release new versions or improvements to your purchased templates, you'll receive them automatically at no additional cost.",
+      "Yes. Start a free trial anytime to test measurements, invoicing, and client management before upgrading.",
   },
 ]
 
@@ -61,7 +61,8 @@ export function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about our templates and service.
+            Learn how InvoiceFlow Pro streamlines measurement-based invoicing
+            for trade businesses.
           </p>
         </motion.div>
 
@@ -117,4 +118,3 @@ export function FAQSection() {
     </section>
   )
 }
-
